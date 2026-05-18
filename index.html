@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love ❤️</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:sans-serif;
+font-family:'Cairo', sans-serif;
 }
 
 body{
@@ -19,6 +21,23 @@ overflow:hidden;
 background:black;
 }
 
+/* BACKGROUND HEARTS */
+.heart{
+position:fixed;
+color:#ff4d88;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+opacity:0.7;
+z-index:0;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh) scale(0.5); opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-10vh) scale(1.2); opacity:0;}
+}
+
+/* SCREENS */
 .screen{
 width:100%;
 height:100vh;
@@ -31,21 +50,14 @@ align-items:center;
 animation:fade .7s;
 }
 
-.active{
-display:flex;
-}
+.active{display:flex;}
 
 @keyframes fade{
-from{
-opacity:0;
-transform:scale(1.03);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
+from{opacity:0; transform:scale(1.03);}
+to{opacity:1; transform:scale(1);}
 }
 
+/* BACKGROUND */
 .bg{
 position:absolute;
 width:100%;
@@ -57,210 +69,107 @@ object-fit:cover;
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.55);
-backdrop-filter:blur(2px);
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(3px);
 }
 
-.lock-box,
-.typing-box,
-.message-box{
+/* BOX */
+.box{
 z-index:2;
 width:90%;
 max-width:500px;
 text-align:center;
 color:white;
-}
-
-.lock-box{
-background:rgba(255,255,255,.08);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
 padding:30px;
-border-radius:30px;
+border-radius:25px;
 backdrop-filter:blur(15px);
-box-shadow:0 0 30px rgba(255,255,255,.1);
 }
 
-.lock-box h2{
-margin-bottom:20px;
-font-size:42px;
-}
-
-.lock-box input{
+/* INPUT */
+input{
 width:100%;
 padding:15px;
 border:none;
 border-radius:15px;
-outline:none;
-margin-bottom:20px;
-font-size:18px;
-background:rgba(255,255,255,.1);
+margin:15px 0;
+background:rgba(255,255,255,0.1);
 color:white;
+outline:none;
 }
 
-.lock-box input::placeholder{
-color:#ddd;
-}
-
-.lock-box button,
-#nextBtn,
-.message-btn,
-.message-box button{
-padding:12px 30px;
+/* BUTTONS */
+button{
+padding:12px 25px;
 border:none;
 border-radius:20px;
 background:#ff4d88;
 color:white;
-font-size:18px;
 cursor:pointer;
 transition:.3s;
 }
 
-.lock-box button:hover,
-#nextBtn:hover,
-.message-btn:hover,
-.message-box button:hover{
-transform:scale(1.05);
-}
+button:hover{transform:scale(1.05);}
 
-.typing-box{
-font-size:24px;
-line-height:45px;
-z-index:2;
-width:90%;
-max-width:700px;
-text-align:center;
-color:white;
-background:rgba(255,255,255,.08);
-padding:30px;
-border-radius:30px;
-backdrop-filter:blur(15px);
-}
+/* TEXT */
+h1{font-size:40px;}
+p{line-height:30px;}
 
-#nextBtn{
-display:none;
-margin-top:30px;
-}
-
-#mainPage{
-overflow-y:auto;
-padding:30px 0;
-}
-
-.content{
-position:relative;
-z-index:2;
-width:90%;
-color:white;
-text-align:center;
-}
-
-.content h1{
-font-size:45px;
-margin-bottom:20px;
-}
-
+/* COUNTER */
 .counter{
 display:flex;
 justify-content:center;
-gap:15px;
-margin:30px 0;
+gap:10px;
 flex-wrap:wrap;
+margin:20px 0;
 }
 
 .counter div{
-background:rgba(255,255,255,.1);
-padding:20px;
-border-radius:25px;
-min-width:90px;
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.08);
+padding:15px;
+border-radius:15px;
+min-width:80px;
 }
 
 .counter span{
-font-size:35px;
+font-size:28px;
 font-weight:bold;
 }
 
-.box{
-background:rgba(255,255,255,.1);
-padding:20px;
-border-radius:25px;
-margin:20px 0;
-backdrop-filter:blur(10px);
-box-shadow:0 0 20px rgba(255,255,255,.08);
-}
-
-.photo{
-width:100%;
-border-radius:20px;
-margin-bottom:15px;
-}
-
-.video{
-width:100%;
-border-radius:20px;
-}
-
+/* HEART TITLE */
 .love{
-margin-top:40px;
-font-size:55px;
+margin-top:20px;
+font-size:45px;
 animation:beat 1s infinite;
 }
 
 @keyframes beat{
-0%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.08);
-}
-100%{
-transform:scale(1);
-}
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
 
-.message-btn{
-margin-top:20px;
-}
-
-.message-box{
-background:rgba(0,0,0,.45);
-padding:25px;
-border-radius:25px;
-backdrop-filter:blur(10px);
-line-height:40px;
-font-size:20px;
-}
-
-.message-box button{
-margin-top:30px;
-}
-
-.music-player{
+/* MUSIC */
+.music{
 position:fixed;
 bottom:15px;
 left:50%;
 transform:translateX(-50%);
-z-index:999;
-background:rgba(0,0,0,.6);
-padding:12px 20px;
+background:rgba(0,0,0,0.6);
+padding:10px 15px;
 border-radius:20px;
+z-index:999;
+color:white;
 display:flex;
-gap:15px;
+gap:10px;
 align-items:center;
-color:white;
-backdrop-filter:blur(10px);
 }
 
-.music-player button{
-border:none;
-padding:8px 15px;
-border-radius:15px;
-background:#ff4d88;
-color:white;
-cursor:pointer;
-}
-
-::-webkit-scrollbar{
-display:none;
+/* MOBILE */
+@media(max-width:600px){
+h1{font-size:28px;}
+.box{padding:20px;}
 }
 
 </style>
@@ -268,369 +177,159 @@ display:none;
 
 <body>
 
+<!-- HEARTS -->
+<script>
+function createHearts(){
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
 
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHearts,300);
+</script>
 
-
-
-<!-- PASSWORD PAGE -->
-
-<div id="lockScreen" class="screen active">
-
-<img src="bg.jpg" class="bg">
-
+<!-- LOCK -->
+<div id="lock" class="screen active">
+<img class="bg" src="bg.jpg">
 <div class="overlay"></div>
 
-<div class="lock-box">
-
-<h2>جاهزة😉</h2>
-
-<input type="password" id="password" placeholder="Password">
-
-<button onclick="unlock()">unlock</button>
-
+<div class="box">
+<h1>جاهزة؟ 💖</h1>
+<input type="password" id="pass" placeholder="Password">
+<button onclick="unlock()">دخول</button>
+</div>
 </div>
 
-</div>
-
-
-
-
-
-
-
-
-<!-- FIRST PAGE -->
-
-<div id="firstPage" class="screen">
-
-<img src="bg.jpg" class="bg">
-
+<!-- FIRST -->
+<div id="first" class="screen">
+<img class="bg" src="bg.jpg">
 <div class="overlay"></div>
 
-<div class="typing-box">
-
+<div class="box">
 <p id="typing"></p>
-
-<button id="nextBtn" onclick="openMainPage()">
-next
-</button>
-
+<button id="next" style="display:none" onclick="goMain()">التالي</button>
+</div>
 </div>
 
-</div>
-
-
-
-
-
-
-
-
-
-<!-- MAIN PAGE -->
-
-<div id="mainPage" class="screen">
-
-<img src="bg.jpg" class="bg">
-
+<!-- MAIN -->
+<div id="main" class="screen">
+<img class="bg" src="bg.jpg">
 <div class="overlay"></div>
 
-<div class="content">
+<div class="box">
 
 <h1>بدايتنا 💞</h1>
 
 <div class="counter">
-
-<div>
-<span id="days">0</span>
-<p>Days</p>
+<div><span id="d">0</span><p>Days</p></div>
+<div><span id="h">0</span><p>Hours</p></div>
+<div><span id="m">0</span><p>Minutes</p></div>
+<div><span id="s">0</span><p>Seconds</p></div>
 </div>
 
-<div>
-<span id="hours">0</span>
-<p>Hours</p>
-</div>
+<p>💖 9-12-2023</p>
 
-<div>
-<span id="minutes">0</span>
-<p>Minutes</p>
-</div>
+<h2 class="love">بحبك ❤️</h2>
 
-<div>
-<span id="seconds">0</span>
-<p>Seconds</p>
-</div>
+<button onclick="openMsg()">رسالة 💌</button>
 
 </div>
-
-<div class="box">
-<h2>💖 9-12-2023 💖</h2>
 </div>
 
-<div class="box">
-<h2>يوم ما قولتلك بحبك ❤️</h2>
-<p>11/2/2026</p>
-</div>
-
-<div class="box">
-<h2>اول خروجه لينا سوا ❤️</h2>
-<p>11/5/2026</p>
-</div>
-
-<div class="box">
-
-<img src="photo.jpg" class="photo">
-
-<p>ربنا يخليكي ليا ❤️</p>
-
-</div>
-
-<div class="box">
-
-<video controls class="video">
-<source src="video.mp4" type="video/mp4">
-</video>
-
-</div>
-
-<h1 class="love">بحبك ❤️</h1>
-
-<button class="message-btn" onclick="openMessage()">
-❤️ massage ❤️
-</button>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<!-- MESSAGE PAGE -->
-
-<div id="messagePage" class="screen">
-
-<img src="bg.jpg" class="bg">
-
+<!-- MESSAGE -->
+<div id="msg" class="screen">
+<img class="bg" src="bg.jpg">
 <div class="overlay"></div>
 
-<div class="message-box">
-
+<div class="box">
 <p>
-
-دعيت انك تكوني معايا طول يوم عرفة انشاء الله هتكوني بتاعتي انا و هنفضل مع بعض و هننجح سوا و نعمل كل حاجه سوا وجودك مهون عليا كتير يا نونه انت احلي بنوته شافتها عيوني و مش بحبك علشان شكلك بس انت كدا كدا قمر و تتحبي انا حبيتك علشان انت اللي عرفتي تخليني رغاي و بعرف اقول كلام حلو عرفتي تخليني اسيطر علي عصبيتي علشان خايف علي زعلك ونك بتزعلي من نبرة الصوت لو عليت شوية حتي عرفتي تخليني احس بمسؤلية الحب اني اخاف عليكي اني اهتم بيكي اني محسسكيش باي حاجه وحشة ابقي مسؤول منك انا البتصرف انا اللي اعمل علشان انا الراجل ونت البنوته مسؤلية كلمه بحبك مش مجرد كلمه ده وعد اني هاجيلك وعد اني اجيب اخري علشان اوصلك انا بحبك بجد يا نونتي ♥️🫂
-
+أنا بحبك بجد... وجودك فرق معايا في كل حاجة ❤️
 </p>
-
-<button onclick="backHome()">
-memories
-</button>
-
+<button onclick="back()">رجوع</button>
+</div>
 </div>
 
+<!-- MUSIC -->
+<div class="music">
+<span>🎵 Music</span>
+<button onclick="toggleMusic()" id="btn">Play</button>
 </div>
 
-
-
-
-
-
-
-
-
-
-<!-- MUSIC PLAYER -->
-
-<div class="music-player">
-
-<span>🎵 Our Song</span>
-
-<button onclick="toggleMusic()" id="musicBtn">
-Pause
-</button>
-
-</div>
-
-<audio id="music" autoplay loop>
-<source src="song.mp3" type="audio/mpeg">
+<audio id="music" loop>
+<source src="song.mp3">
 </audio>
-
-
-
-
-
-
-
-
 
 <script>
 
-const pass = "Love";
+const password="Love";
 
+function show(id){
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+/* LOCK */
 function unlock(){
-
-let input = document.getElementById("password").value;
-
-if(input === pass){
-
-document.getElementById("lockScreen").classList.remove("active");
-
-document.getElementById("firstPage").classList.add("active");
-
-typeText();
-
-}else{
-
-alert("Wrong Password");
-
+let v=document.getElementById("pass").value;
+if(v===password){
+show("first");
+type();
+}else alert("Wrong Password");
 }
 
-}
+/* TYPE */
+let text="أنا بحبك جدًا ❤️ وكل يوم معاك هو أجمل يوم في حياتي 💞";
+let i=0;
 
+function type(){
+let el=document.getElementById("typing");
+el.innerHTML="";
+i=0;
 
-
-
-
-let text =
-"شيموئتي بحبك اوي اوي اوي كل سنه ونت دايماً عيدي و كل سنة ونت معايا و كل سنة ونت منورة حياتي كلها انا بجد مبسوط بيكي اوي انت يا نونه انت الحاجه الوحيده اللي عمري ما ابعد عنها و افضل احبها و اعمل كل حاجه علشان تبقي موجوده معايا مهما حصل 💞";
-
-let i = 0;
-
-function typeText(){
-
-let speed = 60;
-
-let typing = document.getElementById("typing");
-
-let interval = setInterval(()=>{
-
-typing.innerHTML += text.charAt(i);
-
+let t=setInterval(()=>{
+el.innerHTML+=text[i];
 i++;
-
-if(i >= text.length){
-
-clearInterval(interval);
-
-document.getElementById("nextBtn").style.display = "inline-block";
-
+if(i>=text.length){
+clearInterval(t);
+document.getElementById("next").style.display="inline-block";
+}
+},60);
 }
 
-},speed);
+/* NAV */
+function goMain(){show("main");}
+function openMsg(){show("msg");}
+function back(){show("main");}
 
-}
-
-
-
-
-
-
-function openMainPage(){
-
-document.getElementById("firstPage").classList.remove("active");
-
-document.getElementById("mainPage").classList.add("active");
-
-}
-
-
-
-
-
-function openMessage(){
-
-document.getElementById("mainPage").classList.remove("active");
-
-document.getElementById("messagePage").classList.add("active");
-
-}
-
-
-
-
-
-function backHome(){
-
-document.getElementById("messagePage").classList.remove("active");
-
-document.getElementById("mainPage").classList.add("active");
-
-}
-
-
-
-
-
-
-
-// COUNTDOWN
-
-const startDate = new Date("2023-12-09T00:00:00").getTime();
+/* COUNTER */
+const start=new Date("2023-12-09").getTime();
 
 setInterval(()=>{
+let now=new Date().getTime();
+let diff=now-start;
 
-const now = new Date().getTime();
-
-const distance = now - startDate;
-
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("seconds").innerHTML = seconds;
-
+document.getElementById("d").innerText=Math.floor(diff/86400000);
+document.getElementById("h").innerText=Math.floor(diff/3600000%24);
+document.getElementById("m").innerText=Math.floor(diff/60000%60);
+document.getElementById("s").innerText=Math.floor(diff/1000%60);
 },1000);
 
-
-
-
-
-
-
-
-// MUSIC
-
-const music = document.getElementById("music");
-
+/* MUSIC */
+let music=document.getElementById("music");
 function toggleMusic(){
-
-const btn = document.getElementById("musicBtn");
-
+let btn=document.getElementById("btn");
 if(music.paused){
-
 music.play();
-btn.innerHTML = "Pause";
-
+btn.innerText="Pause";
 }else{
-
 music.pause();
-btn.innerHTML = "Play";
-
+btn.innerText="Play";
 }
-
-}
-
-
-
-
-
-window.onload = ()=>{
-
-music.play().catch(()=>{});
-
 }
 
 </script>

@@ -19,7 +19,6 @@ font-family:'Cairo', sans-serif;
 body{
 overflow:hidden;
 background:black;
-color:white;
 }
 
 /* BACKGROUND */
@@ -35,11 +34,11 @@ z-index:-2;
 position:fixed;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,0.6);
 z-index:-1;
 }
 
-/* SCREENS */
+/* SCREEN */
 .screen{
 display:none;
 width:100%;
@@ -47,6 +46,7 @@ height:100vh;
 justify-content:center;
 align-items:center;
 text-align:center;
+color:white;
 }
 
 .active{display:flex;}
@@ -54,7 +54,7 @@ text-align:center;
 /* BOX */
 .box{
 width:90%;
-max-width:520px;
+max-width:500px;
 background:rgba(255,255,255,0.06);
 border:1px solid rgba(255,255,255,0.1);
 padding:25px;
@@ -96,9 +96,9 @@ line-height:30px;
 /* COUNTER */
 .counter{
 display:flex;
-flex-wrap:wrap;
 gap:10px;
 justify-content:center;
+flex-wrap:wrap;
 margin:15px 0;
 }
 
@@ -110,31 +110,14 @@ min-width:80px;
 }
 
 .counter span{
-font-size:24px;
+font-size:25px;
 font-weight:bold;
 }
 
-/* PHOTO + VIDEO */
-.photo{
-width:100%;
-border-radius:20px;
-margin-top:10px;
-}
-
-video{
-width:100%;
-border-radius:20px;
-margin-top:10px;
-}
-
-.caption{
-margin-top:10px;
-opacity:0.9;
-}
-
-/* LOVE */
+/* HEART */
 .love{
 font-size:45px;
+margin-top:10px;
 animation:beat 1s infinite;
 }
 
@@ -144,62 +127,20 @@ animation:beat 1s infinite;
 100%{transform:scale(1);}
 }
 
-/* MUSIC PLAYER (SPOTIFY STYLE) */
-.music-player{
+/* MUSIC PLAYER */
+.music{
 position:fixed;
 bottom:15px;
 left:50%;
 transform:translateX(-50%);
-width:92%;
-max-width:420px;
-background:rgba(20,20,20,0.75);
-backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.7);
+padding:10px 15px;
 border-radius:20px;
 display:flex;
+gap:10px;
 align-items:center;
-gap:12px;
-padding:10px;
-z-index:999;
-border:1px solid rgba(255,255,255,0.1);
-}
-
-.album{
-width:50px;
-height:50px;
-border-radius:12px;
-object-fit:cover;
-}
-
-.info{
-flex:1;
-}
-
-.title{
-font-size:14px;
-margin-bottom:6px;
-}
-
-.bar{
-width:100%;
-height:4px;
-background:rgba(255,255,255,0.2);
-border-radius:10px;
-overflow:hidden;
-}
-
-.progress{
-height:100%;
-width:0%;
-background:#1db954;
-}
-
-#musicBtn{
-background:#1db954;
-border:none;
-padding:10px 12px;
-border-radius:50%;
 color:white;
-cursor:pointer;
+z-index:999;
 }
 
 </style>
@@ -210,35 +151,20 @@ cursor:pointer;
 <img class="bg" src="bg.jpg">
 <div class="overlay"></div>
 
-<!-- HEARTS -->
-<script>
-setInterval(()=>{
-let h=document.createElement("div");
-h.innerHTML="❤️";
-h.style.position="fixed";
-h.style.left=Math.random()*100+"vw";
-h.style.top="100vh";
-h.style.fontSize="20px";
-h.style.animation="beat 2s linear";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),4000);
-},300);
-</script>
-
 <!-- LOCK -->
 <div id="lock" class="screen active">
 <div class="box">
 <h2>جاهزة😉</h2>
-<input id="pass" type="password" placeholder="Password">
+<input type="password" id="pass" placeholder="Password">
 <button onclick="unlock()">unlock</button>
 </div>
 </div>
 
 <!-- TYPE -->
-<div id="type" class="screen">
+<div id="typePage" class="screen">
 <div class="box">
 <p id="typing"></p>
-<button id="next" style="display:none" onclick="goMain()">next</button>
+<button id="nextBtn" style="display:none" onclick="goMain()">next</button>
 </div>
 </div>
 
@@ -249,7 +175,6 @@ setTimeout(()=>h.remove(),4000);
 <h2>بدايتنا 💞</h2>
 
 <div class="counter">
-<div><span id="y">0</span><p>Years</p></div>
 <div><span id="d">0</span><p>Days</p></div>
 <div><span id="h">0</span><p>Hours</p></div>
 <div><span id="m">0</span><p>Minutes</p></div>
@@ -258,18 +183,29 @@ setTimeout(()=>h.remove(),4000);
 
 <p>💖 9-12-2023 💖</p>
 
+<div class="box" style="margin-top:10px">
 <h4>يوم ما قولتلك بحبك ❤️</h4>
 <p>11/2/2026</p>
+</div>
 
+<div class="box">
 <h4>اول خروجه لينا سوا ❤️</h4>
 <p>11/5/2026</p>
+</div>
 
-<img src="your-photo.jpg" class="photo">
-<p class="caption">ربنا يخليكي ليا ❤️</p>
+<div class="box">
 
-<video controls>
+<!-- IMAGE / VIDEO PLACE -->
+<img src="your-photo.jpg" style="width:100%;border-radius:15px">
+
+<p>ربنا يخليكي ليا ❤️</p>
+
+<!-- VIDEO OPTIONAL -->
+<video controls style="width:100%;margin-top:10px;border-radius:15px">
 <source src="video.mp4">
 </video>
+
+</div>
 
 <h2 class="love">بحبك ❤️</h2>
 
@@ -281,23 +217,18 @@ setTimeout(()=>h.remove(),4000);
 <!-- MESSAGE -->
 <div id="msg" class="screen">
 <div class="box">
+
 <p id="msgText"></p>
+
 <button onclick="back()">memories</button>
+
 </div>
 </div>
 
-<!-- MUSIC PLAYER -->
-<div class="music-player">
-
-<img src="album.jpg" class="album">
-
-<div class="info">
-<div class="title">Our Love Song ❤️</div>
-<div class="bar"><div class="progress" id="progress"></div></div>
-</div>
-
-<button id="musicBtn" onclick="toggleMusic()">▶</button>
-
+<!-- MUSIC -->
+<div class="music">
+<span>🎵 Song</span>
+<button onclick="toggleMusic()" id="mBtn">Play</button>
 </div>
 
 <audio id="music" loop>
@@ -306,26 +237,27 @@ setTimeout(()=>h.remove(),4000);
 
 <script>
 
-const pass="Love";
+const password="Love";
 
-/* NAV */
+/* SCREEN CONTROL */
 function show(id){
-document.querySelectorAll(".screen").forEach(e=>e.classList.remove("active"));
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
 
 /* LOCK */
 function unlock(){
-if(document.getElementById("pass").value===pass){
-show("type");
+if(document.getElementById("pass").value===password){
+show("typePage");
 type();
 }else alert("Wrong password");
 }
 
-/* TYPE */
+/* TYPE TEXT */
 let text="شيموئتي بحبك اوي اوي اوي كل سنه ونت دايماً عيدي و كل سنة ونت معايا و كل سنة ونت منورة حياتي كلها انا بجد مبسوط بيكي اوي انت يا نونه انت الحاجه الوحيده اللي عمري ما ابعد عنها و افضل احبها و اعمل كل حاجه علشان تبقي موجوده معايا مهما حصل 💞";
 
 let i=0;
+
 function type(){
 let el=document.getElementById("typing");
 el.innerHTML="";
@@ -336,9 +268,9 @@ el.innerHTML+=text[i];
 i++;
 if(i>=text.length){
 clearInterval(t);
-document.getElementById("next").style.display="inline-block";
+document.getElementById("nextBtn").style.display="inline-block";
 }
-},45);
+},50);
 }
 
 /* NEXT */
@@ -349,47 +281,41 @@ const start=new Date("2023-12-09").getTime();
 
 setInterval(()=>{
 let now=new Date().getTime();
-let diff=now-start;
+let d=now-start;
 
-document.getElementById("y").innerText=Math.floor(diff/(1000*60*60*24*365));
-document.getElementById("d").innerText=Math.floor(diff/86400000);
-document.getElementById("h").innerText=Math.floor(diff/3600000%24);
-document.getElementById("m").innerText=Math.floor(diff/60000%60);
-document.getElementById("s").innerText=Math.floor(diff/1000%60);
+document.getElementById("d").innerText=Math.floor(d/86400000);
+document.getElementById("h").innerText=Math.floor(d/3600000%24);
+document.getElementById("m").innerText=Math.floor(d/60000%60);
+document.getElementById("s").innerText=Math.floor(d/1000%60);
 },1000);
 
 /* MESSAGE */
+let msgText=`دعيت انك تكوني معايا طول يوم عرفة انشاء الله هتكوني بتاعتي انا و هنفضل مع بعض و هننجح سوا و نعمل كل حاجه سوا وجودك مهون عليا كتير يا نونه انت احلي بنوته شافتها عيوني و مش بحبك علشان شكلك بس انت كدا كدا قمر و تتحبي انا حبيتك علشان انت اللي عرفتي تخليني رغاي و بعرف اقول كلام حلو عرفتي تخليني اسيطر علي عصبيتي علشان خايف علي زعلك ونك بتزعلي من نبرة الصوت لو عليت شوية حتي عرفتي تخليني احس بمسؤلية الحب اني اخاف عليكي اني اهتم بيكي اني محسسكيش باي حاجه وحشة ابقي مسؤول منك انا البتصرف انا اللي اعمل علشان انا الراجل ونت البنوته مسؤلية كلمه بحبك مش مجرد كلمه ده وعد اني هاجيلك وعد اني اجيب اخري علشان اوصلك انا بحبك بجد يا نونتي ♥️🫂`;
+
 function openMsg(){
 show("msg");
-document.getElementById("msgText")=
-`دعيت انك تكوني معايا طول يوم عرفة انشاء الله هتكوني بتاعتي انا و هنفضل مع بعض و هننجح سوا و نعمل كل حاجه سوا وجودك مهون عليا كتير يا نونه انت احلي بنوته شافتها عيوني و مش بحبك علشان شكلك بس انت كدا كدا قمر و تتحبي انا حبيتك علشان انت اللي عرفتي تخليني رغاي و بعرف اقول كلام حلو عرفتي تخليني اسيطر علي عصبيتي علشان خايف علي زعلك ونك بتزعلي من نبرة الصوت لو عليت شوية حتي عرفتي تخليني احس بمسؤلية الحب اني اخاف عليكي اني اهتم بيكي اني محسسكيش باي حاجه وحشة ابقي مسؤول منك انا البتصرف انا اللي اعمل علشان انا الراجل ونت البنوته مسؤلية كلمه بحبك مش مجرد كلمه ده وعد اني هاجيلك وعد اني اجيب اخري علشان اوصلك انا بحبك بجد يا نونتي ♥️🫂`;
+document.getElementById("msgText").innerText=msgText;
 }
 
 function back(){show("main");}
 
 /* MUSIC */
 let music=document.getElementById("music");
-let btn=document.getElementById("musicBtn");
-let progress=document.getElementById("progress");
-
 function toggleMusic(){
+let b=document.getElementById("mBtn");
 if(music.paused){
 music.play();
-btn.innerHTML="⏸";
+b.innerText="Pause";
 }else{
 music.pause();
-btn.innerHTML="▶";
+b.innerText="Play";
 }
 }
 
-/* PROGRESS */
-music.addEventListener("timeupdate",()=>{
-let p=(music.currentTime/music.duration)*100;
-progress.style.width=p+"%";
-});
-
-/* AUTOPLAY */
-window.onload=()=>music.play().catch(()=>{});
+/* AUTOPLAY TRY */
+window.onload=()=>{
+music.play().catch(()=>{});
+}
 
 </script>
 
